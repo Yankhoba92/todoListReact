@@ -20,7 +20,7 @@ const EditTodoForm = ({ editTodo, task}) => {
         }}
       />
       <button type="submit" className="todo-btn">
-       Modification
+       Modifier
       </button>
     </form>
   );

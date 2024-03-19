@@ -3,7 +3,6 @@ import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 import Todo from "./Todo";
 import EditTodoForm from "./EditTodoForm";
-uuidv4();
 
 const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
@@ -40,18 +39,18 @@ const TodoWrapper = () => {
   };
   return (
     <div className="todoWrapper">
-      <h1>Get Things Done!</h1>
+      <h1>Remplis ta journée !</h1>
       <TodoForm addTodo={addTodo} />
-      {todos.map((todo, index) =>
+      {todos.map((todo) =>
         todo.isEditing ? (
-          <EditTodoForm editTodo={editTask} task={todo} />
+          <EditTodoForm key={todo.id} editTodo={editTask} task={todo} />
         ) : (
           <Todo
+            key={todo.id} // Utilisation de l'identifiant unique comme clé
             task={todo}
-            key={index}
-            toggleComplete={toggleComplete}
-            deleteTodo={deleteTodo}
-            editTodo={editTodo}
+            toggleComplete={() => toggleComplete(todo.id)}
+            deleteTodo={() => deleteTodo(todo.id)}
+            editTodo={() => editTodo(todo.id)}
           />
         )
       )}
