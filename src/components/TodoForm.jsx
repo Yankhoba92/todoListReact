@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 
-const TodoForm = ({addTodo}) => {
+const TodoForm = ({ addTodo }) => {
   const [value, setValue] = useState("");
-  const handleChange =(e)=>{
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     addTodo(value);
-    setValue("")
-  }
+    setValue("");
+  };
   return (
-    <form className="todoForm" onSubmit={handleChange}>
+    <form className="todoForm" onSubmit={handleSubmit}>
       <input
         type="text"
-        value={value}
         className="todo-input"
+        value={value}
         placeholder="Tâches du Jour"
         onChange={(e) => {
-            setValue(e.target.value);
-          }}
+          setValue(e.target.value);
+        }}
       />
       <button type="submit" className="todo-btn">
         Tâche
